@@ -1,6 +1,8 @@
 ## Introduction
 
-TODO: add project description
+This project investigates the impact of backscatter on communication on existing WiFi links. Backscatter devices are prevalent in IoT applications due to their ability to operate without a dedicated power source, but their reliance on ambient signal reflection introduces interference that may degrade nearby wireless communication. 
+
+We focus on WiFi as the legacy link due to its high throughput, making interference more observable, and the availability of measuring tools like iPerf3. We build a backscatter tag using the HMC550A RF switch and measure its effect on WiFi throughput using iPerf3 across varying switching frequencies, duty cycles, and physical positions relative to the transmitter and receiver. Our goal is to characterize how backscatter communication disrupts the legacy link, which can informe the design of interference-aware backscatter systems. 
 
 ## Background
 
