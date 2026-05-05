@@ -36,8 +36,8 @@ Since the backscatter link is a reflection, both links operate on the same radio
 - Keysight Technologies E36312A Triple Output Programmable DC Power Supply.
 
 ### Communication system: 
-- iPerf client (iPhone 12)
-- iPerf server (Linux PC with Ubuntu 24.04, set up to also be the WiFi hotspot)
+- iPerf client (rooted Google Pixel 9 with termux installed)
+- iPerf server (Linux PC with Ubuntu 24.04, with port 5201 open for iPerf and running as a 2.4 GHz WiFi hotspot)
 
 > Hardware modifications: All hardware components are used in our experiments *as is* without modification. 
 
@@ -68,7 +68,7 @@ To verify correct switch operation before live experiments, a second function ge
 
 ![experiment wiring](images/experiment_wiring.png)
 
-For the actual experiment, the function generator on RF2 is replaced by the **ANT-5GWWS3-SMA antenna**, which harvests ambient WiFi signals from the NETGEAR router and simultaneously reflects a modulated backscatter signal back into the environment. The **ANNE-50L+ 50Ω terminator** on RF1 absorbs the through signal. The Keysight function generator on Vctl drives the switch at the configured switching frequency and duty cycle while iPerf3 logs throughput on the legacy link in the background.
+For the actual experiment, the function generator on RF2 is replaced by the **ANT-5GWWS3-SMA antenna**, which harvests ambient WiFi signals from the WiFi access point and simultaneously reflects a modulated backscatter signal back into the environment. The **ANNE-50L+ 50Ω terminator** on RF1 absorbs the through signal. The Keysight function generator on Vctl drives the switch at the configured switching frequency and duty cycle while iPerf3 logs throughput on the legacy link in the background.
 
 ### Software environment setup
 
