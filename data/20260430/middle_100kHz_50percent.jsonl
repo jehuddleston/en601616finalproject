@@ -1,27 +1,5 @@
 {
 	"start":	{
-		"connected":	[],
-		"version":	"iperf 3.20+",
-		"system_info":	"Linux superserver 6.17.0-20-generic #20~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Mar 19 01:28:37 UTC 2 x86_64"
-	},
-	"intervals":	[],
-	"end":	{
-	},
-	"error":	"error - unable to start listener for connections: Address already in use"
-}
-{
-	"start":	{
-		"connected":	[],
-		"version":	"iperf 3.20+",
-		"system_info":	"Linux superserver 6.17.0-20-generic #20~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Mar 19 01:28:37 UTC 2 x86_64"
-	},
-	"intervals":	[],
-	"end":	{
-	},
-	"error":	"error - unable to start listener for connections: Address already in use"
-}
-{
-	"start":	{
 		"connected":	[{
 				"socket":	6,
 				"local_host":	"192.168.135.129",
