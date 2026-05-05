@@ -36,15 +36,15 @@ Since the backscatter link is a reflection, both links operate on the same radio
 - Keysight Technologies E36312A Triple Output Programmable DC Power Supply.
 
 ### Communication system: 
-- iPerf client (iPhone 12)
-- iPerf server (Linux PC with Ubuntu 24.04, set up to also be the WiFi hotspot)
+- iPerf client (rooted Google Pixel 9 with termux installed)
+- iPerf server (Linux PC with Ubuntu 24.04, with port 5201 open for iPerf and running as a 2.4 GHz WiFi hotspot)
 
 > Hardware modifications: All hardware components are used in our experiments *as is* without modification. 
 
 ## Software environment
 
 ### iPerf3
-We use [iPerf3](https://iperf.fr/iperf-doc.php) to measure and log WiFi data tranmission performance. We set up a iPerf3 client on an iPhone (download from [App Store](https://apps.apple.com/us/app/iperf-3-wifi-speed-test/id1462260546)), and a iPerf3 server on an Linux machine with Ubuntu Noble OS (download for [Ubuntu](https://iperf.fr/iperf-download.php)). 
+We use [iPerf3](https://iperf.fr/iperf-doc.php) to measure and log WiFi data tranmission performance. We set up a iPerf3 client by running iperf3 via [termux](https://termux.dev/en/) on a rooted Google Pixel 9, and an iPerf3 server on an Linux machine with Ubuntu Noble OS (download for [Ubuntu](https://iperf.fr/iperf-download.php)). 
 
 ### Data analysis
 For data analysis, we use a Python3 Jupyter Notebook environment, with all library dependencies specified in `requirements.txt` (see the Reproducibility Guide for details). The environment should be OS-agnostic as long as the operating system is reasonably up to date. Our setup uses Ubuntu 24.04 with Python3 and pip installed. 
@@ -68,7 +68,7 @@ To verify correct switch operation before live experiments, a second function ge
 
 ![experiment wiring](images/experiment_wiring.png)
 
-For the actual experiment, the function generator on RF2 is replaced by the **ANT-5GWWS3-SMA antenna**, which harvests ambient WiFi signals from the NETGEAR router and simultaneously reflects a modulated backscatter signal back into the environment. The **ANNE-50L+ 50Ω terminator** on RF1 absorbs the through signal. The Keysight function generator on Vctl drives the switch at the configured switching frequency and duty cycle while iPerf3 logs throughput on the legacy link in the background.
+For the actual experiment, the function generator on RF2 is replaced by the **ANT-5GWWS3-SMA antenna**, which harvests ambient WiFi signals from the WiFi access point and simultaneously reflects a modulated backscatter signal back into the environment. The **ANNE-50L+ 50Ω terminator** on RF1 absorbs the through signal. The Keysight function generator on Vctl drives the switch at the configured switching frequency and duty cycle while iPerf3 logs throughput on the legacy link in the background.
 
 ### Software environment setup
 
@@ -96,7 +96,7 @@ Although many communication technologies (e.g., WiFi, cellular, Bluetooth) can b
 
 With that in mind, we chose iPerf3 as the performance measurement tool. We set up the regular communication systems (on which the backscatter device harvest) as the following:
 
-- iPhone (iPerf3 client) → 2.4GHz WiFi → Linux PC (WiFi access point / iPerf3 server)
+- Google Pixel 9 (iPerf3 client) → 2.4GHz WiFi → Linux PC (WiFi access point / iPerf3 server)
 
 Regular communication is constantly on in the background. 
 
