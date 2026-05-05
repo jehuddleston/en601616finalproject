@@ -44,7 +44,7 @@ Since the backscatter link is a reflection, both links operate on the same radio
 ## Software environment
 
 ### iPerf3
-We use [iPerf3](https://iperf.fr/iperf-doc.php) to measure and log WiFi data tranmission performance. We set up a iPerf3 client on an iPhone (download from [App Store](https://apps.apple.com/us/app/iperf-3-wifi-speed-test/id1462260546)), and a iPerf3 server on an Linux machine with Ubuntu Noble OS (download for [Ubuntu](https://iperf.fr/iperf-download.php)). 
+We use [iPerf3](https://iperf.fr/iperf-doc.php) to measure and log WiFi data tranmission performance. We set up a iPerf3 client by running iperf3 via [termux](https://termux.dev/en/) on a rooted Google Pixel 9, and an iPerf3 server on an Linux machine with Ubuntu Noble OS (download for [Ubuntu](https://iperf.fr/iperf-download.php)). 
 
 ### Data analysis
 For data analysis, we use a Python3 Jupyter Notebook environment, with all library dependencies specified in `requirements.txt` (see the Reproducibility Guide for details). The environment should be OS-agnostic as long as the operating system is reasonably up to date. Our setup uses Ubuntu 24.04 with Python3 and pip installed. 
@@ -96,7 +96,7 @@ Although many communication technologies (e.g., WiFi, cellular, Bluetooth) can b
 
 With that in mind, we chose iPerf3 as the performance measurement tool. We set up the regular communication systems (on which the backscatter device harvest) as the following:
 
-- iPhone (iPerf3 client) → 2.4GHz WiFi → Linux PC (WiFi access point / iPerf3 server)
+- Google Pixel 9 (iPerf3 client) → 2.4GHz WiFi → Linux PC (WiFi access point / iPerf3 server)
 
 Regular communication is constantly on in the background. 
 
