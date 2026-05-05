@@ -37,15 +37,14 @@ Since the backscatter link is a reflection, both links operate on the same radio
 
 ### Communication system: 
 - iPerf client (iPhone 12)
-- iPerf server (Linux PC with Ubuntu Noble)
-- Router (NETGEAR Nighthawk Hotspot)
+- iPerf server (Linux PC with Ubuntu 24.04, set up to also be the WiFi hotspot)
 
 > Hardware modifications: All hardware components are used in our experiments *as is* without modification. 
 
 ## Software environment
 
 ### iPerf3
-We use [iPerf3](https://iperf.fr/iperf-doc.php) to measure and log WiFi data tranmission performance. We set up a iPerf3 client on an iPhone (download from [App Store](https://apps.apple.com/us/app/iperf-3-wifi-speed-test/id1462260546)), and a iPerf3 server on an Linux machine with Ubuntu Noble OS (download for [Ubuntu](https://iperf.fr/iperf-download.php)) with an public IP address `128.220.159.221`. 
+We use [iPerf3](https://iperf.fr/iperf-doc.php) to measure and log WiFi data tranmission performance. We set up a iPerf3 client on an iPhone (download from [App Store](https://apps.apple.com/us/app/iperf-3-wifi-speed-test/id1462260546)), and a iPerf3 server on an Linux machine with Ubuntu Noble OS (download for [Ubuntu](https://iperf.fr/iperf-download.php)). 
 
 ### Data analysis
 For data analysis, we use a Python3 Jupyter Notebook environment, with all library dependencies specified in `requirements.txt` (see the Reproducibility Guide for details). The environment should be OS-agnostic as long as the operating system is reasonably up to date. Our setup uses Ubuntu 24.04 with Python3 and pip installed. 
@@ -93,17 +92,21 @@ You will find the main data analysis script placed in `analysis/main.ipynb`.
 
 We want to measure whether backscatter communication has an impact on normal WiFi transmission in the adjacent area. To do so, we set up experiments to compare WiFi performance when the backscatter device is present then absent. 
 
-Although many communication technologies (e.g., WiFi, cellular, Bluetooth) could be used as the legacy link for a backscatter system, we chose WiFi for several reasons. First, it can be adjusted to high throughput which would make any degradation in performance more observable, whereas Bluetooth operates at low power levels, which would possibily make such effects harder to detect. Second, there is a richer list of experiment-ready software available for WiFi performance measurement compared to other technologies. All in all, WiFi offers relative simplicity in terms of setup and monitoring. 
+Although many communication technologies (e.g., WiFi, cellular, Bluetooth) can be used as the legacy link for a backscatter system, we chose WiFi for the following reasons. First, it can be adjusted to high throughput which would make any degradation in performance more observable, whereas Bluetooth operates at low power levels, which would possibily make such effects harder to detect. Second, there is a richer list of experiment-ready software available for WiFi performance measurement compared to other technologies. All in all, WiFi offers relative simplicity in terms of setup and monitoring. 
 
-With that in mind, we chose iPerf3 as the performance measurement tool. We set up the regular communication systems (on which the backscatter device harvest) as the following: 
-- iPhone (iPerf3 client) → Wi-Fi → NETGEAR hotspot → Cellular → Linux server (iPerf3 server)
+With that in mind, we chose iPerf3 as the performance measurement tool. We set up the regular communication systems (on which the backscatter device harvest) as the following:
 
-Regular communication is constantly on in the background. In the mean time, we set up the backscatter device to enumerate the following configurations: 
+- iPhone (iPerf3 client) → 2.4GHz WiFi → Linux PC (WiFi access point / iPerf3 server)
 
-| Variable                      | Values                                                                                              |
-|-------------------------------|-----------------------------------------------------------------------------------------------------|
-| Switching frequency           | 100kHz (same channel), 1MHz (channel edge because 2MHz channel width), 10MHz (adjacent channel)     |
-| Backscatter device position   | Near transmitter, middle, near receiver                                                             |
-| Duty cycle                    | 25%, 50%, 75%                                                                                       |
+Regular communication is constantly on in the background. 
 
-With each configuration, we repeat the experiment eight times in total (four times in one sitting, then four additional times on another day) to reduce variance cause by any unpredictable environmental effects.
+In the mean time, we set up the backscatter device to enumerate the following configurations in three positions: 
+
+![positions](images/experiments.png)
+
+| Variable                      | Values                  |
+|-------------------------------|-------------------------|
+| Switching frequency           | 100kHz, 1MHz, 10MHz     |
+| Duty cycle                    | 25%, 50%, 75%           |
+
+For each configuration, we repeat the test eight times in total to reduce variance cause by any unpredictable environmental effects. Each test is 30 seconds long, with phone doing upload speed test over TCP. We record the throughput, retransmission time, and congestion window size. 
