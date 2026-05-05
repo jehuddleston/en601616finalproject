@@ -1,6 +1,8 @@
 ## Introduction
 
-TODO: add project description
+This project investigates the impact of backscatter on communication on existing WiFi links. Backscatter devices are prevalent in IoT applications due to their ability to operate without a dedicated power source, but their reliance on ambient signal reflection introduces interference that may degrade nearby wireless communication. 
+
+We focus on WiFi as the legacy link due to its high throughput, making interference more observable, and the availability of measuring tools like iPerf3. We build a backscatter tag using the HMC550A RF switch and measure its effect on WiFi throughput using iPerf3 across varying switching frequencies, duty cycles, and physical positions relative to the transmitter and receiver. Our goal is to characterize how backscatter communication disrupts the legacy link, which can informe the design of interference-aware backscatter systems. 
 
 ## Background
 
@@ -51,7 +53,21 @@ For data analysis, we use a Python3 Jupyter Notebook environment, with all libra
 1. Hardware assembly
 ![hardware assembly guide](images/experiment.jpg)
 
-TODO: describe how they are wired together?
+The backscatter tag assembly is centered around the HMC550A GaAs MMIC SPST switch. The Siglent SPD3303X-E DC power supply (3.3V) connects to the **Vdd** pin, and the Keysight E36312A function generator outputting a 3.3Vpp square wave connects to **Vctl** to drive the switching behavior. Both GND pins are tied to a common ground rail.
+
+**Step 1: Verification**
+
+![verification wiring](images/verification_wiring.png)
+
+To verify correct switch operation before live experiments, a second function generator is connected to **RF2** to simulate an incoming RF signal. The modulated output is observed at **RF1** via an oscilloscope. The figure below shows the oscilloscope output confirming that the switch successfully modulates the input signal at the expected frequency and duty cycle.
+
+![verification output](images/verification_output.jpg)
+
+**Step 2: Live experiment**
+
+![experiment wiring](images/experiment_wiring.png)
+
+For the actual experiment, the function generator on RF2 is replaced by the **ANT-5GWWS3-SMA antenna**, which harvests ambient WiFi signals from the NETGEAR router and simultaneously reflects a modulated backscatter signal back into the environment. The **ANNE-50L+ 50Ω terminator** on RF1 absorbs the through signal. The Keysight function generator on Vctl drives the switch at the configured switching frequency and duty cycle while iPerf3 logs throughput on the legacy link in the background.
 
 2. Software environment setup
 
