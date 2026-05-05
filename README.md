@@ -55,17 +55,18 @@ TODO: describe how they are wired together?
 
 2. Software environment setup
 
-Run: 
+Get the source code:
 ```bash
 git clone git@github.com:jehuddleston/en601616finalproject.git
 cd en601616finalproject
-# ubuntu should come with python3 but if you don't have pip installed
-sudo apt update && sudo apt install python3-pip
+```
+
+Set up the environment:
+```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-jupyter notebook 
-# then follow whatever URL it prints on your terminal
+jupyter notebook
 ```
 
 You will find the main data analysis script placed in `analysis/main.ipynb`. 
@@ -78,10 +79,14 @@ Although many communication technologies (e.g., WiFi, cellular, Bluetooth) could
 
 With that in mind, we chose iPerf3 as the performance measurement tool. We set up the regular communication systems (on which the backscatter device harvest) as the following: 
 - iPhone (iPerf3 client) → Wi-Fi → NETGEAR hotspot → Cellular → Linux server (iPerf3 server)
-It is constantly on in the background. In the mean time, we set up the backscatter device to enumerate the following configurations:
+
+It is constantly on in the background. In the mean time, we set up the backscatter device to enumerate the following configurations: 
 
 | Variable                      | Values                                                                                              |
 |-------------------------------|-----------------------------------------------------------------------------------------------------|
 | Switching frequency           | 100kHz (same channel), 1MHz (channel edge because 2MHz channel width), 10MHz (adjacent channel)     |
 | Backscatter device position   | Near transmitter, middle, near receiver                                                             |
 | Duty cycle                    | 25%, 50%, 75%                                                                                       |
+
+TODO: describe how we do the experiments.
+For each configuration, we run the performance test three times to reduce variance. 
