@@ -110,3 +110,6 @@ In the mean time, we set up the backscatter device to enumerate the following co
 | Duty cycle                    | 25%, 50%, 75%           |
 
 For each configuration, we repeat the test eight times in total to reduce variance cause by any unpredictable environmental effects. Each test is 30 seconds long, with phone doing upload speed test over TCP. We record the throughput, retransmission time, and congestion window size. 
+
+## Results and Discussion
+See [`docs/results.md`](docs/results.md) for the full results and discussion. Presentation slides are available [here](https://docs.google.com/presentation/d/1Zg5OHytdVDxpbajZSeymTHlyF0N7aCkUT_koFiBUwDA/edit?usp=sharing).
