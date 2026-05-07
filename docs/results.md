@@ -1,12 +1,14 @@
 # Results and Discussion
 
-All data are aggregated over one baseline 5-minute iPerf3 run without backscatter and 27 runs of different configurations, across three backscatter tag positions (near phone / middle / near server) and the nine combinations of switching frequency (100 kHz, 1 MHz, 10 MHz) and duty cycle (25%, 50%, 75%).
+All data are aggregated over three baseline 5-minute iPerf3 run without backscatter and twenty-seven runs of different configurations. We permutate the variables of backscatter tag positions (near phone / in the middle / near server), switching frequency (100 kHz, 1 MHz, 10 MHz), and duty cycle (25%, 50%, 75%) which gives us in total twenty-seven unique configurations. 
+
+![setup](../images/experiments.png)
 
 ## Summary
 
 - **Downlink throughput (access point (AP) → phone) degrades** from a baseline of ~8.0 Mbps to ~0.7–1.0 Mbps, and this is mostly invariant across all 27 tag-present configurations.
 
-- **Uplink throughput (phone → AP) is largely preserved**, ranging from ~33 to ~46 Mbps around the ~39.3 Mbps baseline.
+- **Uplink throughput (phone → AP) is largely preserved**, ranging from ~33 to ~46 Mbps, with ~39.3 Mbps being the baseline.
 
 - **Backscatter tag is most disruptive when placed close to the phone and least disruptive when placed close to the AP.**
 
@@ -16,7 +18,6 @@ All data are aggregated over one baseline 5-minute iPerf3 run without backscatte
 ## Discussion
 
 **Why is the downlink affected more than the uplink?** There are two possibilities: (1) the AP transmits at higher power than the phone, so AP-to-phone reflections are stronger relative to the direct path than phone-to-AP reflections; (2) the phone's compact antenna may be more easily affected by a nearby reflector than the AP's external antennas. 
-
 
 ## Limitations
 
