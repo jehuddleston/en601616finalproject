@@ -1,6 +1,6 @@
 # Results and Discussion
 
-All data are aggregated over three baseline 5-minute iPerf3 run without backscatter and twenty-seven runs of different configurations. We permutate the variables of backscatter tag positions (near phone / in the middle / near server), switching frequency (100 kHz, 1 MHz, 10 MHz), and duty cycle (25%, 50%, 75%) which gives us in total twenty-seven unique configurations. 
+All data are aggregated over three baseline 5-minute iPerf3 run without backscatter and twenty-seven runs on different configurations. We permutate the variables of backscatter tag positions (near phone / in the middle / near server), switching frequency (100 kHz, 1 MHz, 10 MHz), and duty cycle (25%, 50%, 75%) which gives us in total twenty-seven unique configurations. 
 
 ![setup](../images/experiments.png)
 
@@ -17,7 +17,7 @@ All data are aggregated over three baseline 5-minute iPerf3 run without backscat
 
 ## Discussion
 
-**Why is the downlink affected more than the uplink?** There are two possibilities: (1) the AP transmits at higher power than the phone, so AP-to-phone reflections are stronger relative to the direct path than phone-to-AP reflections; (2) the phone's compact antenna may be more easily affected by a nearby reflector than the AP's external antennas. 
+**Why is the downlink affected more than the uplink?** We think there could be serveral possibilities: (1) the AP transmits at higher power than the phone, so AP-to-phone reflections are stronger relative to the direct path than phone-to-AP reflections; (2) the phone's compact antenna may be more easily affected by a nearby reflector than the AP's external antennas. 
 
 ## Limitations
 
